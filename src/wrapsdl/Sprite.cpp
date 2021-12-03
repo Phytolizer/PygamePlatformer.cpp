@@ -34,6 +34,46 @@ void wrapsdl::Sprite::setCenter(const glm::vec2 pos)
     m_pos.y = pos.y - m_size.y / 2;
 }
 
+float wrapsdl::Sprite::getLeft() const
+{
+    return m_pos.x;
+}
+
+float wrapsdl::Sprite::getRight() const
+{
+    return m_pos.x + m_size.x;
+}
+
+float wrapsdl::Sprite::getTop() const
+{
+    return m_pos.y;
+}
+
+float wrapsdl::Sprite::getBottom() const
+{
+    return m_pos.y + m_size.y;
+}
+
+void wrapsdl::Sprite::setLeft(const float left)
+{
+    m_pos.x = left;
+}
+
+void wrapsdl::Sprite::setRight(const float right)
+{
+    m_pos.x = right - m_size.x;
+}
+
+void wrapsdl::Sprite::setTop(const float top)
+{
+    m_pos.y = top;
+}
+
+void wrapsdl::Sprite::setBottom(const float bottom)
+{
+    m_pos.y = bottom - m_size.y;
+}
+
 glm::vec2 wrapsdl::Sprite::getTopLeft() const
 {
     return m_pos;

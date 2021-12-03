@@ -9,9 +9,9 @@ class Player : public wrapsdl::Sprite
     float m_speed;
     float m_gravity;
     float m_jumpSpeed;
+    bool m_grounded;
 
     void getInput(const std::array<bool, SDL_NUM_SCANCODES>& keysPressed);
-    void applyGravity();
     void jump();
 
   public:
@@ -19,4 +19,8 @@ class Player : public wrapsdl::Sprite
     void update(const std::array<bool, SDL_NUM_SCANCODES>& keysPressed);
     [[nodiscard]] glm::vec2 getDirection() const;
     void setSpeed(float speed);
+    [[nodiscard]] float getSpeed() const;
+    void applyGravity(float dt);
+    void setDirectionY(float y);
+    void setGrounded();
 };

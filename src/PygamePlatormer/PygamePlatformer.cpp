@@ -5,6 +5,7 @@
 #include "Settings.hpp"
 
 #include <SDL.h>
+#include <chrono>
 #include <wrapsdl/GraphicsContext.hpp>
 #include <wrapsdl/Renderer.hpp>
 #include <wrapsdl/Window.hpp>
@@ -17,6 +18,9 @@ int main(int /*argc*/, char** /*argv*/)
     const wrapsdl::Renderer renderer{window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC};
     Level level{renderer, LEVEL_MAP};
 
+    auto frameStart = std::chrono::high_resolution_clock::now();
+    auto frameEnd = frameStart;
+    float dt = 0;
     std::array<bool, SDL_NUM_SCANCODES> keysPressed{false};
     bool quit = false;
     while (!quit)
@@ -41,8 +45,11 @@ int main(int /*argc*/, char** /*argv*/)
         }
 
         renderer.clearWith({0, 0, 0, 255});
-        level.run(renderer, keysPressed);
+        level.run(renderer, dt, keysPressed);
         renderer.present();
+        frameEnd = std::chrono::high_resolution_clock::now();
+        dt = std::chrono::duration<float>(frameEnd - frameStart).count();
+        frameStart = frameEnd;
     }
 
     return 0;
