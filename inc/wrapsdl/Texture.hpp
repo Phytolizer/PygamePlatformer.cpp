@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SmartRenderer.hpp"
+#include "Renderer.hpp"
 #include "SmartSurface.hpp"
 #include <SDL.h>
 
@@ -15,8 +15,8 @@ class Texture
     void cleanup() const;
 
   public:
-    Texture(const SmartRenderer& renderer, SmartSurface surf);
-    Texture(const SmartRenderer& renderer, Uint32 format, int access, int width, int height);
+    Texture(const Renderer& renderer, SmartSurface surf);
+    Texture(const Renderer& renderer, Uint32 format, int access, int width, int height);
     Texture(const Texture&) = delete;
     Texture& operator=(const Texture&) = delete;
     Texture(Texture&& other) noexcept;

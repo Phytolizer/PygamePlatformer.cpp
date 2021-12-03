@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SmartWindow.hpp"
+#include "Window.hpp"
 
 #include <SDL.h>
 
@@ -16,7 +16,7 @@ class Renderer
     void cleanup() const;
 
   public:
-    Renderer(const SmartWindow& window, int index, Uint32 flags);
+    Renderer(const Window& window, int index, Uint32 flags);
     ~Renderer();
     Renderer(const Renderer&) = delete;
     Renderer& operator=(const Renderer&) = delete;

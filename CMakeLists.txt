@@ -31,6 +31,11 @@ find_package(
     CONFIG
     REQUIRED
 )
+find_package(
+    glm
+    CONFIG
+    REQUIRED
+)
 
 add_custom_target(
     "copy_assets"
@@ -67,13 +72,15 @@ target_compile_features("wrapsdl" PUBLIC "cxx_std_20")
 
 # Add source to this project's executable.
 add_executable(
-    "PygamePlatformer.cpp" WIN32 "src/PygamePlatormer/PygamePlatformer.cpp"
-                                 "src/PygamePlatormer/Settings.hpp"
-)
+    "PygamePlatformer.cpp" WIN32
+    "src/PygamePlatormer/PygamePlatformer.cpp"
+    "src/PygamePlatormer/Settings.hpp"
+    "src/PygamePlatormer/Tile.hpp"
+ "src/PygamePlatormer/Tile.cpp")
 if(WIN32)
     target_link_libraries("PygamePlatformer.cpp" PRIVATE "SDL2::SDL2main")
 endif()
-target_link_libraries("PygamePlatformer.cpp" PRIVATE "wrapsdl")
+target_link_libraries("PygamePlatformer.cpp" PRIVATE "wrapsdl" "glm::glm")
 target_include_directories("PygamePlatformer.cpp" PRIVATE "inc")
 target_compile_features("PygamePlatformer.cpp" PUBLIC "cxx_std_20")
 add_dependencies("PygamePlatformer.cpp" "copy_assets")

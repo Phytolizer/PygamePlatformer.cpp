@@ -1,8 +1,8 @@
-#include "wrapsdl/SmartWindow.hpp"
+#include "wrapsdl/Window.hpp"
 
 #include "wrapsdl/Core.hpp"
 
-void wrapsdl::SmartWindow::cleanup() const
+void wrapsdl::Window::cleanup() const
 {
     if (m_window != nullptr)
     {
@@ -10,22 +10,22 @@ void wrapsdl::SmartWindow::cleanup() const
     }
 }
 
-wrapsdl::SmartWindow::SmartWindow(const char* title, int x, int y, int w, int h, Uint32 flags)
+wrapsdl::Window::Window(const char* title, int x, int y, int w, int h, Uint32 flags)
     : m_window(CheckPointer(SDL_CreateWindow(title, x, y, w, h, flags)))
 {
 }
 
-wrapsdl::SmartWindow::~SmartWindow()
+wrapsdl::Window::~Window()
 {
     cleanup();
 }
 
-wrapsdl::SmartWindow::SmartWindow(SmartWindow&& other) noexcept : m_window(other.m_window)
+wrapsdl::Window::Window(Window&& other) noexcept : m_window(other.m_window)
 {
     other.m_window = nullptr;
 }
 
-wrapsdl::SmartWindow& wrapsdl::SmartWindow::operator=(SmartWindow&& other) noexcept
+wrapsdl::Window& wrapsdl::Window::operator=(Window&& other) noexcept
 {
     if (&other != this)
     {
@@ -37,7 +37,7 @@ wrapsdl::SmartWindow& wrapsdl::SmartWindow::operator=(SmartWindow&& other) noexc
     return *this;
 }
 
-SDL_Window* wrapsdl::SmartWindow::get() const
+SDL_Window* wrapsdl::Window::get() const
 {
     return m_window;
 }

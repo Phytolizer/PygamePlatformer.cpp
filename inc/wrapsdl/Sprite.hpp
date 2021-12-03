@@ -1,16 +1,16 @@
 #pragma once
-#include "SmartTexture.hpp"
+#include "Texture.hpp"
 
 namespace wrapsdl
 {
 class Sprite
 {
-    SmartTexture m_texture;
+    Texture m_texture;
     SDL_Rect m_rect;
 
   public:
-    explicit Sprite(SmartTexture tex);
-    const SmartTexture& getTexture() const;
+    explicit Sprite(Texture tex);
+    const Texture& getTexture() const;
     const SDL_Rect& getRect() const;
     void setTopLeft(int x, int y);
     void setMidBottom(int x, int y);

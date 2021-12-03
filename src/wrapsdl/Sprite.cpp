@@ -2,12 +2,12 @@
 
 #include <utility>
 
-wrapsdl::Sprite::Sprite(SmartTexture tex)
+wrapsdl::Sprite::Sprite(Texture tex)
     : m_texture{std::move(tex)}, m_rect{0, 0, m_texture.width(), m_texture.height()}
 {
 }
 
-const wrapsdl::SmartTexture& wrapsdl::Sprite::getTexture() const
+const wrapsdl::Texture& wrapsdl::Sprite::getTexture() const
 {
     return m_texture;
 }

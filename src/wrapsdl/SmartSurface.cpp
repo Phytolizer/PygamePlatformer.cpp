@@ -1,8 +1,8 @@
-#include "wrapsdl/SmartSurface.hpp"
+#include "wrapsdl/Surface.hpp"
 
 #include "wrapsdl/Core.hpp"
 
-void wrapsdl::SmartSurface::cleanup() const
+void wrapsdl::Surface::cleanup() const
 {
     if (m_surface != nullptr)
     {
@@ -10,16 +10,16 @@ void wrapsdl::SmartSurface::cleanup() const
     }
 }
 
-wrapsdl::SmartSurface::SmartSurface(SDL_Surface* surf) : m_surface(CheckPointer(surf))
+wrapsdl::Surface::Surface(SDL_Surface* surf) : m_surface(CheckPointer(surf))
 {
 }
 
-wrapsdl::SmartSurface::SmartSurface(SmartSurface&& other) noexcept : m_surface(other.m_surface)
+wrapsdl::Surface::Surface(Surface&& other) noexcept : m_surface(other.m_surface)
 {
     other.m_surface = nullptr;
 }
 
-wrapsdl::SmartSurface& wrapsdl::SmartSurface::operator=(SmartSurface&& other) noexcept
+wrapsdl::Surface& wrapsdl::Surface::operator=(Surface&& other) noexcept
 {
     if (&other != this)
     {
@@ -31,12 +31,12 @@ wrapsdl::SmartSurface& wrapsdl::SmartSurface::operator=(SmartSurface&& other) no
     return *this;
 }
 
-wrapsdl::SmartSurface::~SmartSurface()
+wrapsdl::Surface::~Surface()
 {
     cleanup();
 }
 
-SDL_Surface* wrapsdl::SmartSurface::get() const
+SDL_Surface* wrapsdl::Surface::get() const
 {
     return m_surface;
 }
