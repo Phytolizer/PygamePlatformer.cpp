@@ -34,6 +34,11 @@ void wrapsdl::Sprite::setCenter(const glm::vec2 pos)
     m_pos.y = pos.y - m_size.y / 2;
 }
 
+glm::vec2 wrapsdl::Sprite::getTopLeft() const
+{
+    return m_pos;
+}
+
 bool wrapsdl::Sprite::collides(const Sprite& other) const
 {
     return m_pos.x < other.m_pos.x + other.m_size.x && m_pos.x + m_size.x > other.m_pos.x &&

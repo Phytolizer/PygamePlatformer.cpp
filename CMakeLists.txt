@@ -74,7 +74,7 @@ add_executable(
     "src/PygamePlatormer/Settings.hpp"
     "src/PygamePlatormer/Tile.cpp"
     "src/PygamePlatormer/Tile.hpp"
- "src/PygamePlatormer/Level.hpp" "src/PygamePlatormer/Level.cpp")
+ "src/PygamePlatormer/Level.hpp" "src/PygamePlatormer/Level.cpp" "src/PygamePlatormer/Player.hpp" "src/PygamePlatormer/Player.cpp")
 if(WIN32)
     target_link_libraries("PygamePlatformer.cpp" PRIVATE "SDL2::SDL2main")
 endif()

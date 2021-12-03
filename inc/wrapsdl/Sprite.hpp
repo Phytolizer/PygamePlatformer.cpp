@@ -19,6 +19,7 @@ class Sprite
     void setTopLeft(glm::vec2 pos);
     void setMidBottom(glm::vec2 pos);
     void setCenter(glm::vec2 pos);
+    [[nodiscard]] glm::vec2 getTopLeft() const;
     [[nodiscard]] bool collides(const Sprite& other) const;
     [[nodiscard]] bool collides(const glm::vec2& pt) const;
 };
