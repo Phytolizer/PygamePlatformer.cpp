@@ -1,15 +1,16 @@
 #pragma once
 
+#include <array>
 #include <string_view>
 
-constexpr std::string_view LEVEL_MAP = "                            "
-                                       "                            "
-                                       "                            "
-                                       " XX    XXX            XX    "
-                                       " XX                         "
-                                       " XXXX         XX        XX  "
-                                       " XXXX       XX              "
-                                       " XX    X  XXXX    XX  XX    "
-                                       "       X  XXXX    XX  XXX   "
-                                       "    XXXX  XXXXXX  XX  XXXX  "
-                                       "XXXXXXXX  XXXXXX  XX  XXXX  ";
+constexpr std::array<std::string_view, 11> LEVEL_MAP = {
+    "                            ", "                            ", "                            ",
+    " XX    XXX            XX    ", " XX                         ", " XXXX         XX        XX  ",
+    " XXXX       XX              ", " XX    X  XXXX    XX  XX    ", "       X  XXXX    XX  XXX   ",
+    "    XXXX  XXXXXX  XX  XXXX  ", "XXXXXXXX  XXXXXX  XX  XXXX  ",
+};
+
+constexpr int TILE_SIZE = 64;
+
+constexpr int SCREEN_WIDTH = 1200;
+constexpr int SCREEN_HEIGHT = LEVEL_MAP.size() * TILE_SIZE;

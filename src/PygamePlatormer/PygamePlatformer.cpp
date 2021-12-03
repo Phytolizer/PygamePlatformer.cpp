@@ -8,9 +8,6 @@
 #include <wrapsdl/SmartRenderer.hpp>
 #include <wrapsdl/SmartWindow.hpp>
 
-constexpr int SCREEN_WIDTH = 1200;
-constexpr int SCREEN_HEIGHT = 700;
-
 int main(int /*argc*/, char** /*argv*/)
 {
     wrapsdl::GraphicsContext context;
