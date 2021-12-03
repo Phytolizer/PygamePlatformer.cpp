@@ -47,17 +47,17 @@ add_library(
     "wrapsdl"
     "inc/wrapsdl/Core.hpp"
     "inc/wrapsdl/GraphicsContext.hpp"
-    "inc/wrapsdl/SmartRenderer.hpp"
-    "inc/wrapsdl/SmartSurface.hpp"
-    "inc/wrapsdl/SmartTexture.hpp"
-    "inc/wrapsdl/SmartWindow.hpp"
+    
+    
+    
+    
     "inc/wrapsdl/Sprite.hpp"
     "src/wrapsdl/Core.cpp"
     "src/wrapsdl/GraphicsContext.cpp"
-    "src/wrapsdl/SmartRenderer.cpp"
-    "src/wrapsdl/SmartSurface.cpp"
-    "src/wrapsdl/SmartTexture.cpp"
-    "src/wrapsdl/SmartWindow.cpp"
+    "src/wrapsdl/Renderer.cpp"
+    "src/wrapsdl/Surface.cpp"
+    "src/wrapsdl/Texture.cpp"
+    "src/wrapsdl/Window.cpp"
     "src/wrapsdl/Sprite.cpp"
 )
 target_link_libraries(

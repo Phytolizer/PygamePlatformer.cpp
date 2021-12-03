@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Renderer.hpp"
-#include "SmartSurface.hpp"
+#include "Surface.hpp"
 #include <SDL.h>
 
 namespace wrapsdl
@@ -15,7 +15,7 @@ class Texture
     void cleanup() const;
 
   public:
-    Texture(const Renderer& renderer, SmartSurface surf);
+    Texture(const Renderer& renderer, Surface surf);
     Texture(const Renderer& renderer, Uint32 format, int access, int width, int height);
     Texture(const Texture&) = delete;
     Texture& operator=(const Texture&) = delete;
@@ -23,8 +23,8 @@ class Texture
     Texture& operator=(Texture&& other) noexcept;
     ~Texture();
 
-    SDL_Texture* get() const;
-    int width() const;
-    int height() const;
+    [[nodiscard]] SDL_Texture* get() const;
+    [[nodiscard]] int width() const;
+    [[nodiscard]] int height() const;
 };
 } // namespace wrapsdl

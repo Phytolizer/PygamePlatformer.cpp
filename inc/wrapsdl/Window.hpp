@@ -4,19 +4,19 @@
 
 namespace wrapsdl
 {
-class SmartWindow
+class Window
 {
     SDL_Window* m_window;
     void cleanup() const;
 
   public:
-    SmartWindow(const char* title, int x, int y, int w, int h, Uint32 flags);
-    ~SmartWindow();
-    SmartWindow(const SmartWindow&) = delete;
-    SmartWindow& operator=(const SmartWindow&) = delete;
-    SmartWindow(SmartWindow&& other) noexcept;
-    SmartWindow& operator=(SmartWindow&& other) noexcept;
+    Window(const char* title, int x, int y, int w, int h, Uint32 flags);
+    ~Window();
+    Window(const Window&) = delete;
+    Window& operator=(const Window&) = delete;
+    Window(Window&& other) noexcept;
+    Window& operator=(Window&& other) noexcept;
 
-    SDL_Window* get() const;
+    [[nodiscard]] SDL_Window* get() const;
 };
 } // namespace wrapsdl
