@@ -25,6 +25,7 @@ class SmartRenderer
     void setDrawBlendMode(SDL_BlendMode bm) const;
     void setDrawColor(SDL_Color color) const;
     void clear() const;
+    void clearWith(SDL_Color color) const;
     void present() const;
     void copy(const SmartTexture& texture, const SDL_Rect* src, const SDL_Rect* dst) const;
     void copy(const Sprite& spr) const;

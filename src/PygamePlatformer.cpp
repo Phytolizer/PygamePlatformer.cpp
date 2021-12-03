@@ -33,7 +33,7 @@ int main(int /*argc*/, char** /*argv*/)
             }
         }
 
-        renderer.clear();
+        renderer.clearWith({0, 0, 0, 255});
         renderer.present();
     }
 

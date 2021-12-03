@@ -58,6 +58,12 @@ void SmartRenderer::clear() const
     mysdl::CheckCode(SDL_RenderClear(m_renderer));
 }
 
+void SmartRenderer::clearWith(const SDL_Color color) const
+{
+    setDrawColor(color);
+    clear();
+}
+
 void SmartRenderer::present() const
 {
     SDL_RenderPresent(m_renderer);
