@@ -1,9 +1,8 @@
 ﻿// PygamePlatformer.cpp.cpp : Defines the entry point for the application.
 //
 
-#include "Settings.hpp"
-#include "Tile.hpp"
 #include "Level.hpp"
+#include "Settings.hpp"
 
 #include <SDL.h>
 #include <wrapsdl/GraphicsContext.hpp>
@@ -18,6 +17,7 @@ int main(int /*argc*/, char** /*argv*/)
     const wrapsdl::Renderer renderer{window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC};
     Level level{renderer, LEVEL_MAP};
 
+    std::array<bool, SDL_NUM_SCANCODES> keysPressed{false};
     bool quit = false;
     while (!quit)
     {
@@ -29,13 +29,19 @@ int main(int /*argc*/, char** /*argv*/)
             case SDL_QUIT:
                 quit = true;
                 break;
+            case SDL_KEYDOWN:
+                keysPressed[event.key.keysym.scancode] = true;
+                break;
+            case SDL_KEYUP:
+                keysPressed[event.key.keysym.scancode] = false;
+                break;
             default:
                 break;
             }
         }
 
         renderer.clearWith({0, 0, 0, 255});
-        level.run(renderer);
+        level.run(renderer, keysPressed);
         renderer.present();
     }
 

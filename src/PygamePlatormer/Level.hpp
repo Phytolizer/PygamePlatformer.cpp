@@ -22,7 +22,7 @@ class Level
     template <size_t Height>
     Level(const wrapsdl::Renderer& renderer, const std::array<std::string_view, Height>& levelData,
           const wrapsdl::Texture* texture = nullptr);
-    void run(const wrapsdl::Renderer& renderer);
+    void run(const wrapsdl::Renderer& renderer, const std::array<bool, SDL_NUM_SCANCODES>& keysPressed);
 };
 
 template <size_t Height>
