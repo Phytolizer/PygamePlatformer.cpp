@@ -1,4 +1,4 @@
-#include "MySDL.hpp"
+#include "wrapsdl/MySDL.hpp"
 
 #include <SDL_error.h>
 #include <sstream>

@@ -38,35 +38,37 @@ add_custom_target(
             "${CMAKE_CURRENT_BINARY_DIR}/res"
 )
 
-# Add source to this project's executable.
-add_executable(
-    PygamePlatformer.cpp WIN32
-    "src/GraphicsContext.cpp"
-    "src/GraphicsContext.hpp"
-    "src/MySDL.cpp"
-    "src/MySDL.hpp"
-    "src/PygamePlatformer.cpp"
-    "src/SmartRenderer.cpp"
-    "src/SmartRenderer.hpp"
-    "src/SmartSurface.cpp"
-    "src/SmartSurface.hpp"
-    "src/SmartTexture.cpp"
-    "src/SmartTexture.hpp"
-    "src/SmartWindow.cpp"
-    "src/SmartWindow.hpp"
-    "src/Sprite.cpp"
-    "src/Sprite.hpp"
+add_library(
+    "wrapsdl"
+    "inc/wrapsdl/GraphicsContext.hpp"
+    "inc/wrapsdl/MySDL.hpp"
+    "inc/wrapsdl/SmartRenderer.hpp"
+    "inc/wrapsdl/SmartSurface.hpp"
+    "inc/wrapsdl/SmartTexture.hpp"
+    "inc/wrapsdl/SmartWindow.hpp"
+    "inc/wrapsdl/Sprite.hpp"
+    "src/wrapsdl/GraphicsContext.cpp"
+    "src/wrapsdl/MySDL.cpp"
+    "src/wrapsdl/SmartRenderer.cpp"
+    "src/wrapsdl/SmartSurface.cpp"
+    "src/wrapsdl/SmartTexture.cpp"
+    "src/wrapsdl/SmartWindow.cpp"
+    "src/wrapsdl/Sprite.cpp"
 )
 target_link_libraries(
-    PygamePlatformer.cpp
-    PRIVATE "SDL2::SDL2-static"
-            "SDL2::SDL2_image"
-            "SDL2::SDL2_ttf"
-            "SDL2::SDL2_mixer"
+    "wrapsdl"
+    PUBLIC "SDL2::SDL2-static"
+           "SDL2::SDL2_image"
+           "SDL2::SDL2_ttf"
+           "SDL2::SDL2_mixer"
 )
-if(WIN32)
-    target_link_libraries(PygamePlatformer.cpp PRIVATE "SDL2::SDL2main")
-endif()
-add_dependencies(PygamePlatformer.cpp copy_assets)
+target_include_directories("wrapsdl" PUBLIC "inc")
 
-# TODO: Add tests and install targets if needed.
+# Add source to this project's executable.
+add_executable("PygamePlatformer.cpp" WIN32 "src/PygamePlatformer.cpp")
+if(WIN32)
+    target_link_libraries("PygamePlatformer.cpp" PRIVATE "SDL2::SDL2main")
+endif()
+target_link_libraries("PygamePlatformer.cpp" PRIVATE "wrapsdl")
+target_include_directories("PygamePlatformer.cpp" PRIVATE "inc")
+add_dependencies("PygamePlatformer.cpp" "copy_assets")

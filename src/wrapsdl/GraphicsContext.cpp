@@ -1,6 +1,6 @@
-#include "GraphicsContext.hpp"
+#include "wrapsdl/GraphicsContext.hpp"
 
-#include "MySDL.hpp"
+#include "wrapsdl/MySDL.hpp"
 
 #include <SDL.h>
 #include <SDL_image.h>

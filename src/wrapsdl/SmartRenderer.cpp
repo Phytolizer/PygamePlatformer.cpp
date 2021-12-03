@@ -1,8 +1,8 @@
-#include "SmartRenderer.hpp"
+#include "wrapsdl/SmartRenderer.hpp"
 
-#include "MySDL.hpp"
-#include "SmartTexture.hpp"
-#include "Sprite.hpp"
+#include "wrapsdl/MySDL.hpp"
+#include "wrapsdl/SmartTexture.hpp"
+#include "wrapsdl/Sprite.hpp"
 
 void SmartRenderer::cleanup() const
 {

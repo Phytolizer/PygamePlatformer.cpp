@@ -1,6 +1,6 @@
-#include "SmartWindow.hpp"
+#include "wrapsdl/SmartWindow.hpp"
 
-#include "MySDL.hpp"
+#include "wrapsdl/MySDL.hpp"
 
 void SmartWindow::cleanup() const
 {

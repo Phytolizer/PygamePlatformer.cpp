@@ -1,6 +1,6 @@
-#include "SmartTexture.hpp"
+#include "wrapsdl/SmartTexture.hpp"
 
-#include "MySDL.hpp"
+#include "wrapsdl/MySDL.hpp"
 
 void SmartTexture::cleanup() const
 {

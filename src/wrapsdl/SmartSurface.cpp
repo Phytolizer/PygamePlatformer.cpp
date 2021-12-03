@@ -1,6 +1,6 @@
-#include "SmartSurface.hpp"
+#include "wrapsdl/SmartSurface.hpp"
 
-#include "MySDL.hpp"
+#include "wrapsdl/MySDL.hpp"
 
 void SmartSurface::cleanup() const
 {

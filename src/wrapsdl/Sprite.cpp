@@ -1,4 +1,4 @@
-#include "Sprite.hpp"
+#include "wrapsdl/Sprite.hpp"
 
 #include <utility>
 

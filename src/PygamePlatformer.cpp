@@ -1,9 +1,9 @@
 ﻿// PygamePlatformer.cpp.cpp : Defines the entry point for the application.
 //
 
-#include "GraphicsContext.hpp"
-#include "SmartRenderer.hpp"
-#include "SmartWindow.hpp"
+#include "wrapsdl/GraphicsContext.hpp"
+#include "wrapsdl/SmartRenderer.hpp"
+#include "wrapsdl/SmartWindow.hpp"
 
 #include <SDL.h>
 
