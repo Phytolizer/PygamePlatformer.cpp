@@ -13,4 +13,4 @@ constexpr std::array<std::string_view, 11> LEVEL_MAP = {
 constexpr int TILE_SIZE = 64;
 
 constexpr int SCREEN_WIDTH = 1200;
-constexpr int SCREEN_HEIGHT = LEVEL_MAP.size() * TILE_SIZE;
+constexpr int SCREEN_HEIGHT = static_cast<int>(LEVEL_MAP.size() * TILE_SIZE);

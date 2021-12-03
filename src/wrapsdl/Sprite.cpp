@@ -3,7 +3,7 @@
 #include <utility>
 
 wrapsdl::Sprite::Sprite(Texture tex)
-    : m_texture{std::move(tex)}, m_rect{0, 0, m_texture.width(), m_texture.height()}
+    : m_texture{std::move(tex)}, m_pos{0, 0}, m_size{m_texture.width(), m_texture.height()}
 {
 }
 
@@ -12,36 +12,35 @@ const wrapsdl::Texture& wrapsdl::Sprite::getTexture() const
     return m_texture;
 }
 
-const SDL_Rect& wrapsdl::Sprite::getRect() const
+SDL_FRect wrapsdl::Sprite::getRect() const
 {
-    return m_rect;
+    return {m_pos.x, m_pos.y, m_size.x, m_size.y};
 }
 
-void wrapsdl::Sprite::setTopLeft(const int x, const int y)
+void wrapsdl::Sprite::setTopLeft(const glm::vec2 pos)
 {
-    m_rect.x = x;
-    m_rect.y = y;
+    m_pos = pos;
 }
 
-void wrapsdl::Sprite::setMidBottom(const int x, const int y)
+void wrapsdl::Sprite::setMidBottom(const glm::vec2 pos)
 {
-    m_rect.x = x - m_rect.w / 2;
-    m_rect.y = y - m_rect.h;
+    m_pos.x = pos.x - m_size.x / 2;
+    m_pos.y = pos.y - m_size.y;
 }
 
-void wrapsdl::Sprite::setCenter(const int x, const int y)
+void wrapsdl::Sprite::setCenter(const glm::vec2 pos)
 {
-    m_rect.x = x - m_rect.w / 2;
-    m_rect.y = y - m_rect.h / 2;
+    m_pos.x = pos.x - m_size.x / 2;
+    m_pos.y = pos.y - m_size.y / 2;
 }
 
 bool wrapsdl::Sprite::collides(const Sprite& other) const
 {
-    return m_rect.x < other.m_rect.x + other.m_rect.w && m_rect.x + m_rect.w > other.m_rect.x &&
-           m_rect.y < other.m_rect.y + other.m_rect.h && m_rect.h + m_rect.y > other.m_rect.y;
+    return m_pos.x < other.m_pos.x + other.m_size.x && m_pos.x + m_size.x > other.m_pos.x &&
+           m_pos.y < other.m_pos.y + other.m_size.y && m_size.y + m_pos.y > other.m_pos.y;
 }
 
-bool wrapsdl::Sprite::collides(const SDL_Point& pt) const
+bool wrapsdl::Sprite::collides(const glm::vec2& pt) const
 {
-    return m_rect.x < pt.x && m_rect.x + m_rect.w > pt.x && m_rect.y < pt.y && m_rect.h + m_rect.y > pt.y;
+    return m_pos.x < pt.x && m_pos.x + m_size.x > pt.x && m_pos.y < pt.y && m_size.y + m_pos.y > pt.y;
 }

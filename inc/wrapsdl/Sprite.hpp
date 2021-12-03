@@ -1,21 +1,25 @@
 #pragma once
 #include "Texture.hpp"
 
+#include <glm/vec2.hpp>
+
 namespace wrapsdl
 {
 class Sprite
 {
+  protected:
     Texture m_texture;
-    SDL_Rect m_rect;
+    glm::vec2 m_pos;
+    glm::vec2 m_size;
 
   public:
     explicit Sprite(Texture tex);
-    const Texture& getTexture() const;
-    const SDL_Rect& getRect() const;
-    void setTopLeft(int x, int y);
-    void setMidBottom(int x, int y);
-    void setCenter(int x, int y);
-    bool collides(const Sprite& other) const;
-    bool collides(const SDL_Point& pt) const;
+    [[nodiscard]] const Texture& getTexture() const;
+    [[nodiscard]] SDL_FRect getRect() const;
+    void setTopLeft(glm::vec2 pos);
+    void setMidBottom(glm::vec2 pos);
+    void setCenter(glm::vec2 pos);
+    [[nodiscard]] bool collides(const Sprite& other) const;
+    [[nodiscard]] bool collides(const glm::vec2& pt) const;
 };
 } // namespace wrapsdl

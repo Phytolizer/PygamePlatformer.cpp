@@ -1,8 +1,8 @@
 #include "wrapsdl/Renderer.hpp"
 
 #include "wrapsdl/Core.hpp"
-#include "wrapsdl/Texture.hpp"
 #include "wrapsdl/Sprite.hpp"
+#include "wrapsdl/Texture.hpp"
 
 void wrapsdl::Renderer::cleanup() const
 {
@@ -69,14 +69,15 @@ void wrapsdl::Renderer::present() const
     SDL_RenderPresent(m_renderer);
 }
 
-void wrapsdl::Renderer::copy(const Texture& texture, const SDL_Rect* src, const SDL_Rect* dst) const
+void wrapsdl::Renderer::copy(const Texture& texture, const SDL_Rect* src, const SDL_FRect* dst) const
 {
-    CheckCode(SDL_RenderCopy(m_renderer, texture.get(), src, dst));
+    CheckCode(SDL_RenderCopyF(m_renderer, texture.get(), src, dst));
 }
 
 void wrapsdl::Renderer::copy(const Sprite& spr) const
 {
-    copy(spr.getTexture(), nullptr, &spr.getRect());
+    const SDL_FRect r = spr.getRect();
+    copy(spr.getTexture(), nullptr, &r);
 }
 
 void wrapsdl::Renderer::setTarget(const Texture& target) const

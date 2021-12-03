@@ -1,9 +1,11 @@
 #pragma once
 
+#include <wrapsdl/Sprite.hpp>
+
 #include <glm/vec2.hpp>
 
-class Tile
+class Tile : public wrapsdl::Sprite
 {
   public:
-    Tile(glm::vec2 pos, glm::vec2 size);
+    Tile(const wrapsdl::Renderer& renderer, glm::vec2 pos, float size);
 };

@@ -2,6 +2,8 @@
 //
 
 #include "Settings.hpp"
+#include "Tile.hpp"
+#include "Level.hpp"
 
 #include <SDL.h>
 #include <wrapsdl/GraphicsContext.hpp>
@@ -12,8 +14,9 @@ int main(int /*argc*/, char** /*argv*/)
 {
     wrapsdl::GraphicsContext context;
     const wrapsdl::Window window{"Pygame Platformer", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                                      SCREEN_WIDTH,        SCREEN_HEIGHT,           SDL_WINDOW_ALLOW_HIGHDPI};
+                                 SCREEN_WIDTH,        SCREEN_HEIGHT,           SDL_WINDOW_ALLOW_HIGHDPI};
     const wrapsdl::Renderer renderer{window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC};
+    const Level level{renderer, LEVEL_MAP};
 
     bool quit = false;
     while (!quit)
@@ -32,6 +35,7 @@ int main(int /*argc*/, char** /*argv*/)
         }
 
         renderer.clearWith({0, 0, 0, 255});
+        level.run(renderer);
         renderer.present();
     }
 

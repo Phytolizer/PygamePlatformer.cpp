@@ -47,18 +47,14 @@ add_library(
     "wrapsdl"
     "inc/wrapsdl/Core.hpp"
     "inc/wrapsdl/GraphicsContext.hpp"
-    
-    
-    
-    
     "inc/wrapsdl/Sprite.hpp"
     "src/wrapsdl/Core.cpp"
     "src/wrapsdl/GraphicsContext.cpp"
     "src/wrapsdl/Renderer.cpp"
+    "src/wrapsdl/Sprite.cpp"
     "src/wrapsdl/Surface.cpp"
     "src/wrapsdl/Texture.cpp"
     "src/wrapsdl/Window.cpp"
-    "src/wrapsdl/Sprite.cpp"
 )
 target_link_libraries(
     "wrapsdl"
@@ -66,6 +62,7 @@ target_link_libraries(
            "SDL2::SDL2_image"
            "SDL2::SDL2_ttf"
            "SDL2::SDL2_mixer"
+           "glm::glm"
 )
 target_include_directories("wrapsdl" PUBLIC "inc")
 target_compile_features("wrapsdl" PUBLIC "cxx_std_20")
@@ -75,8 +72,9 @@ add_executable(
     "PygamePlatformer.cpp" WIN32
     "src/PygamePlatormer/PygamePlatformer.cpp"
     "src/PygamePlatormer/Settings.hpp"
+    "src/PygamePlatormer/Tile.cpp"
     "src/PygamePlatormer/Tile.hpp"
- "src/PygamePlatormer/Tile.cpp")
+ "src/PygamePlatormer/Level.hpp" "src/PygamePlatormer/Level.cpp")
 if(WIN32)
     target_link_libraries("PygamePlatformer.cpp" PRIVATE "SDL2::SDL2main")
 endif()

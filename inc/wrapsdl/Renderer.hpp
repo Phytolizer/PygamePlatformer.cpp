@@ -23,13 +23,13 @@ class Renderer
     Renderer(Renderer&& other) noexcept;
     Renderer& operator=(Renderer&& other) noexcept;
 
-    SDL_Renderer* get() const;
+    [[nodiscard]] SDL_Renderer* get() const;
     void setDrawBlendMode(SDL_BlendMode bm) const;
     void setDrawColor(SDL_Color color) const;
     void clear() const;
     void clearWith(SDL_Color color) const;
     void present() const;
-    void copy(const Texture& texture, const SDL_Rect* src, const SDL_Rect* dst) const;
+    void copy(const Texture& texture, const SDL_Rect* src, const SDL_FRect* dst) const;
     void copy(const Sprite& spr) const;
     void setTarget(const Texture& target) const;
     void resetTarget() const;
