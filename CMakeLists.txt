@@ -40,15 +40,15 @@ add_custom_target(
 
 add_library(
     "wrapsdl"
-    "inc/wrapsdl/GraphicsContext.hpp"
     "inc/wrapsdl/Core.hpp"
+    "inc/wrapsdl/GraphicsContext.hpp"
     "inc/wrapsdl/SmartRenderer.hpp"
     "inc/wrapsdl/SmartSurface.hpp"
     "inc/wrapsdl/SmartTexture.hpp"
     "inc/wrapsdl/SmartWindow.hpp"
     "inc/wrapsdl/Sprite.hpp"
-    "src/wrapsdl/GraphicsContext.cpp"
     "src/wrapsdl/Core.cpp"
+    "src/wrapsdl/GraphicsContext.cpp"
     "src/wrapsdl/SmartRenderer.cpp"
     "src/wrapsdl/SmartSurface.cpp"
     "src/wrapsdl/SmartTexture.cpp"
@@ -67,7 +67,8 @@ target_compile_features("wrapsdl" PUBLIC "cxx_std_20")
 
 # Add source to this project's executable.
 add_executable(
-    "PygamePlatformer.cpp" WIN32 "src/PygamePlatformer.cpp" "src/Settings.hpp"
+    "PygamePlatformer.cpp" WIN32 "src/PygamePlatormer/PygamePlatformer.cpp"
+                                 "src/PygamePlatormer/Settings.hpp"
 )
 if(WIN32)
     target_link_libraries("PygamePlatformer.cpp" PRIVATE "SDL2::SDL2main")
