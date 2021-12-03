@@ -1,11 +1,12 @@
 ﻿// PygamePlatformer.cpp.cpp : Defines the entry point for the application.
 //
 
+#include "Settings.hpp"
+
+#include <SDL.h>
 #include <wrapsdl/GraphicsContext.hpp>
 #include <wrapsdl/SmartRenderer.hpp>
 #include <wrapsdl/SmartWindow.hpp>
-
-#include <SDL.h>
 
 constexpr int SCREEN_WIDTH = 1200;
 constexpr int SCREEN_HEIGHT = 700;

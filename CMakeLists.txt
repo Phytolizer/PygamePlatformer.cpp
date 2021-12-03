@@ -65,7 +65,9 @@ target_link_libraries(
 target_include_directories("wrapsdl" PUBLIC "inc")
 
 # Add source to this project's executable.
-add_executable("PygamePlatformer.cpp" WIN32 "src/PygamePlatformer.cpp")
+add_executable(
+    "PygamePlatformer.cpp" WIN32 "src/PygamePlatformer.cpp" "src/Settings.hpp"
+)
 if(WIN32)
     target_link_libraries("PygamePlatformer.cpp" PRIVATE "SDL2::SDL2main")
 endif()
