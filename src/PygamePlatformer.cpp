@@ -13,10 +13,10 @@ constexpr int SCREEN_HEIGHT = 700;
 
 int main(int /*argc*/, char** /*argv*/)
 {
-    GraphicsContext context;
-    const SmartWindow window{"Pygame Platformer", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                             SCREEN_WIDTH,        SCREEN_HEIGHT,           SDL_WINDOW_ALLOW_HIGHDPI};
-    const SmartRenderer renderer{window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC};
+    wrapsdl::GraphicsContext context;
+    const wrapsdl::SmartWindow window{"Pygame Platformer", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                                      SCREEN_WIDTH,        SCREEN_HEIGHT,           SDL_WINDOW_ALLOW_HIGHDPI};
+    const wrapsdl::SmartRenderer renderer{window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC};
 
     bool quit = false;
     while (!quit)

@@ -4,6 +4,8 @@
 
 #include <SDL.h>
 
+namespace wrapsdl
+{
 class SmartTexture;
 class Sprite;
 
@@ -33,3 +35,4 @@ class SmartRenderer
     void resetTarget() const;
     void fillRect(SDL_Rect rect) const;
 };
+} // namespace wrapsdl

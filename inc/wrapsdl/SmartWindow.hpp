@@ -2,6 +2,8 @@
 
 #include <SDL_video.h>
 
+namespace wrapsdl
+{
 class SmartWindow
 {
     SDL_Window* m_window;
@@ -17,3 +19,4 @@ class SmartWindow
 
     SDL_Window* get() const;
 };
+} // namespace wrapsdl

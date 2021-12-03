@@ -4,6 +4,8 @@
 #include "SmartSurface.hpp"
 #include <SDL.h>
 
+namespace wrapsdl
+{
 class SmartTexture
 {
     SDL_Texture* m_texture;
@@ -25,3 +27,4 @@ class SmartTexture
     int width() const;
     int height() const;
 };
+} // namespace wrapsdl

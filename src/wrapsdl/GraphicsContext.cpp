@@ -1,24 +1,24 @@
 #include "wrapsdl/GraphicsContext.hpp"
 
-#include "wrapsdl/MySDL.hpp"
+#include "wrapsdl/Core.hpp"
 
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
-GraphicsContext::GraphicsContext()
+wrapsdl::GraphicsContext::GraphicsContext()
 {
-    mysdl::CheckCode(SDL_Init(SDL_INIT_VIDEO));
+    CheckCode(SDL_Init(SDL_INIT_VIDEO));
     if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG)
     {
         std::ostringstream ss;
         ss << "IMG_Init failed: " << IMG_GetError();
         throw std::runtime_error(ss.str());
     }
-    mysdl::CheckCode(TTF_Init());
+    CheckCode(TTF_Init());
 }
 
-GraphicsContext::~GraphicsContext()
+wrapsdl::GraphicsContext::~GraphicsContext()
 {
     TTF_Quit();
     IMG_Quit();

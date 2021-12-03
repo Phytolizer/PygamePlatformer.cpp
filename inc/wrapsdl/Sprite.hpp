@@ -1,12 +1,14 @@
 #pragma once
 #include "SmartTexture.hpp"
 
+namespace wrapsdl
+{
 class Sprite
 {
     SmartTexture m_texture;
     SDL_Rect m_rect;
 
-public:
+  public:
     explicit Sprite(SmartTexture tex);
     const SmartTexture& getTexture() const;
     const SDL_Rect& getRect() const;
@@ -16,3 +18,4 @@ public:
     bool collides(const Sprite& other) const;
     bool collides(const SDL_Point& pt) const;
 };
+} // namespace wrapsdl

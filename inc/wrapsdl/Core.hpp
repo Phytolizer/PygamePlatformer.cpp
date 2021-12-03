@@ -3,7 +3,7 @@
 #include <SDL_error.h>
 #include <sstream>
 
-namespace mysdl
+namespace wrapsdl
 {
 
 void CheckCode(int code);
@@ -11,7 +11,7 @@ template <typename T> T* CheckPointer(T* pointer);
 
 } // namespace mysdl
 
-template <typename T> T* mysdl::CheckPointer(T* pointer)
+template <typename T> T* wrapsdl::CheckPointer(T* pointer)
 {
     if (pointer == nullptr)
     {

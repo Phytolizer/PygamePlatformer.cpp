@@ -1,10 +1,10 @@
 #include "wrapsdl/SmartRenderer.hpp"
 
-#include "wrapsdl/MySDL.hpp"
+#include "wrapsdl/Core.hpp"
 #include "wrapsdl/SmartTexture.hpp"
 #include "wrapsdl/Sprite.hpp"
 
-void SmartRenderer::cleanup() const
+void wrapsdl::SmartRenderer::cleanup() const
 {
     if (m_renderer != nullptr)
     {
@@ -12,22 +12,22 @@ void SmartRenderer::cleanup() const
     }
 }
 
-SmartRenderer::SmartRenderer(const SmartWindow& window, const int index, const Uint32 flags)
-    : m_renderer(mysdl::CheckPointer(SDL_CreateRenderer(window.get(), index, flags)))
+wrapsdl::SmartRenderer::SmartRenderer(const SmartWindow& window, const int index, const Uint32 flags)
+    : m_renderer(CheckPointer(SDL_CreateRenderer(window.get(), index, flags)))
 {
 }
 
-SmartRenderer::~SmartRenderer()
+wrapsdl::SmartRenderer::~SmartRenderer()
 {
     cleanup();
 }
 
-SmartRenderer::SmartRenderer(SmartRenderer&& other) noexcept : m_renderer(other.m_renderer)
+wrapsdl::SmartRenderer::SmartRenderer(SmartRenderer&& other) noexcept : m_renderer(other.m_renderer)
 {
     other.m_renderer = nullptr;
 }
 
-SmartRenderer& SmartRenderer::operator=(SmartRenderer&& other) noexcept
+wrapsdl::SmartRenderer& wrapsdl::SmartRenderer::operator=(SmartRenderer&& other) noexcept
 {
     if (&other != this)
     {
@@ -38,58 +38,58 @@ SmartRenderer& SmartRenderer::operator=(SmartRenderer&& other) noexcept
     return *this;
 }
 
-SDL_Renderer* SmartRenderer::get() const
+SDL_Renderer* wrapsdl::SmartRenderer::get() const
 {
     return m_renderer;
 }
 
-void SmartRenderer::setDrawBlendMode(const SDL_BlendMode bm) const
+void wrapsdl::SmartRenderer::setDrawBlendMode(const SDL_BlendMode bm) const
 {
-    mysdl::CheckCode(SDL_SetRenderDrawBlendMode(m_renderer, bm));
+    CheckCode(SDL_SetRenderDrawBlendMode(m_renderer, bm));
 }
 
-void SmartRenderer::setDrawColor(const SDL_Color color) const
+void wrapsdl::SmartRenderer::setDrawColor(const SDL_Color color) const
 {
-    mysdl::CheckCode(SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a));
+    CheckCode(SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a));
 }
 
-void SmartRenderer::clear() const
+void wrapsdl::SmartRenderer::clear() const
 {
-    mysdl::CheckCode(SDL_RenderClear(m_renderer));
+    CheckCode(SDL_RenderClear(m_renderer));
 }
 
-void SmartRenderer::clearWith(const SDL_Color color) const
+void wrapsdl::SmartRenderer::clearWith(const SDL_Color color) const
 {
     setDrawColor(color);
     clear();
 }
 
-void SmartRenderer::present() const
+void wrapsdl::SmartRenderer::present() const
 {
     SDL_RenderPresent(m_renderer);
 }
 
-void SmartRenderer::copy(const SmartTexture& texture, const SDL_Rect* src, const SDL_Rect* dst) const
+void wrapsdl::SmartRenderer::copy(const SmartTexture& texture, const SDL_Rect* src, const SDL_Rect* dst) const
 {
-    mysdl::CheckCode(SDL_RenderCopy(m_renderer, texture.get(), src, dst));
+    CheckCode(SDL_RenderCopy(m_renderer, texture.get(), src, dst));
 }
 
-void SmartRenderer::copy(const Sprite& spr) const
+void wrapsdl::SmartRenderer::copy(const Sprite& spr) const
 {
     copy(spr.getTexture(), nullptr, &spr.getRect());
 }
 
-void SmartRenderer::setTarget(const SmartTexture& target) const
+void wrapsdl::SmartRenderer::setTarget(const SmartTexture& target) const
 {
-    mysdl::CheckCode(SDL_SetRenderTarget(m_renderer, target.get()));
+    CheckCode(SDL_SetRenderTarget(m_renderer, target.get()));
 }
 
-void SmartRenderer::resetTarget() const
+void wrapsdl::SmartRenderer::resetTarget() const
 {
-    mysdl::CheckCode(SDL_SetRenderTarget(m_renderer, nullptr));
+    CheckCode(SDL_SetRenderTarget(m_renderer, nullptr));
 }
 
-void SmartRenderer::fillRect(const SDL_Rect rect) const
+void wrapsdl::SmartRenderer::fillRect(const SDL_Rect rect) const
 {
-    mysdl::CheckCode(SDL_RenderFillRect(m_renderer, &rect));
+    CheckCode(SDL_RenderFillRect(m_renderer, &rect));
 }

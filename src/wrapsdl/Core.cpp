@@ -1,9 +1,9 @@
-#include "wrapsdl/MySDL.hpp"
+#include "wrapsdl/Core.hpp"
 
 #include <SDL_error.h>
 #include <sstream>
 
-void mysdl::CheckCode(const int code)
+void wrapsdl::CheckCode(const int code)
 {
     if (code != 0)
     {

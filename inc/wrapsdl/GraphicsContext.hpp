@@ -1,5 +1,7 @@
 #pragma once
 
+namespace wrapsdl
+{
 class GraphicsContext
 {
   public:
@@ -10,3 +12,4 @@ class GraphicsContext
     GraphicsContext& operator=(GraphicsContext&&) = delete;
     ~GraphicsContext();
 };
+} // namespace wrapsdl

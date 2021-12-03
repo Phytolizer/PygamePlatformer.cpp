@@ -2,6 +2,8 @@
 
 #include <SDL.h>
 
+namespace wrapsdl
+{
 class SmartSurface
 {
     SDL_Surface* m_surface;
@@ -17,3 +19,4 @@ class SmartSurface
 
     SDL_Surface* get() const;
 };
+} // namespace wrapsdl
